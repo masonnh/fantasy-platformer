@@ -16,6 +16,7 @@ func init_mob(health_init: int = 1, attack_power_init: int = 1, speed_init: int 
 
 ## Subtracts mob health by damage_amt
 func take_damage(damage_amt: int) -> void:
+	print('mob taking damage')
 	health -= damage_amt
 	if health <= 0:
 		die()
@@ -23,6 +24,7 @@ func take_damage(damage_amt: int) -> void:
 
 ## Removes mob from scene
 func die() -> void:
+	print('mob die')
 	queue_free()
 
 

@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hitbox_collision: CollisionShape2D = $Hitbox/HitboxCollision
+@onready var hitbox: Area2D = $Hitbox
 
 
 const SPEED = 300.0
@@ -25,8 +27,10 @@ func _physics_process(delta: float) -> void:
 		anim_sprite.animation = "running"
 		if velocity.x > 0:
 			anim_sprite.flip_h = false
+			flip_hitbox()
 		else:
 			anim_sprite.flip_h = true
+			flip_hitbox()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
@@ -47,10 +51,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func flip_hitbox() -> void:
+	hitbox.position.x *= -1
+
 ## Handles the player's attack state
 func attack() -> void:
 	attacking = true
 	anim_sprite.animation = "attacking"
+	hitbox_collision.disabled = false
 
 
 ## Reduces the player's health by hp_to_sub
@@ -60,4 +68,11 @@ func reduce_health(hp_to_sub: int) -> void:
 
 func _on_animated_sprite_2d_animation_looped() -> void:
 	if attacking:
-		attacking = !attacking
+		attacking = false
+		hitbox_collision.disabled = true
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area is MobBaseClass:
+		var mob = area as MobBaseClass
+		mob.take_damage(attack_power)

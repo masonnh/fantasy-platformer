@@ -82,7 +82,7 @@ autoplay = "walking"
 frame = 1
 frame_progress = 0.73446673
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1448337058]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1448337058]
 position = Vector2(0.9999994, 5)
 shape = SubResource("RectangleShape2D_8w43j")
 
