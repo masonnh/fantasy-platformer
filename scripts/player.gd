@@ -9,12 +9,18 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+# Player stats
 var health := 3
 var attack_power := 1
+
+# Player state
+var alive = true
 var attacking := false
 
 
 func _physics_process(delta: float) -> void:
+	if !alive:
+		return 
 	
 	if is_on_floor() and velocity.x == 0 and not attacking:
 		anim_sprite.animation = "idle"
@@ -51,8 +57,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+## Flips the player attack hitbox across the y axis
 func flip_hitbox() -> void:
 	hitbox.position.x *= -1
+
 
 ## Handles the player's attack state
 func attack() -> void:
@@ -61,9 +69,18 @@ func attack() -> void:
 	hitbox_collision.disabled = false
 
 
-## Reduces the player's health by hp_to_sub
-func reduce_health(hp_to_sub: int) -> void:
-	health -= hp_to_sub
+## Reduces the player's health by damage_amt
+func take_damage(damage_amt: int) -> void:
+	health -= damage_amt
+	if health <= 0:
+		die()
+
+
+## Handles player death
+func die() -> void:
+	alive = false
+	anim_sprite.sprite_frames.set_animation_loop("dying", false)
+	anim_sprite.animation = "dying"
 
 
 func _on_animated_sprite_2d_animation_looped() -> void:
@@ -76,3 +93,9 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is MobBaseClass:
 		var mob = area as MobBaseClass
 		mob.take_damage(attack_power)
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area is MobBaseClass:
+		var mob = area as MobBaseClass
+		take_damage(mob.attack_power)
