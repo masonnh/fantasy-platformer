@@ -290,7 +290,7 @@ animations = [{
 size = Vector2(21, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8ckf"]
-size = Vector2(18.666666, 52.66667)
+size = Vector2(24, 52.66667)
 
 [node name="Player" type="CharacterBody2D" unique_id=1873848005]
 scale = Vector2(3, 3)
@@ -299,9 +299,8 @@ script = ExtResource("1_qhqgy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=411411460]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8ib2y")
-animation = &"dying"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.051398426
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2123343156]
 position = Vector2(-0.5, 0)
@@ -312,6 +311,7 @@ position = Vector2(20, -2.3333335)
 metadata/_edit_group_ = true
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox" unique_id=1418585156]
+position = Vector2(2.666668, 0)
 shape = SubResource("RectangleShape2D_k8ckf")
 disabled = true
 

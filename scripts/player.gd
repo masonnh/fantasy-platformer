@@ -71,6 +71,14 @@ func attack() -> void:
 	hitbox_collision.disabled = false
 
 
+## Adds to player's health by health_amt
+func add_health(health_amt) -> void:
+	if !alive:
+		return
+
+	health += health_amt
+	update_health.emit(health)
+
 ## Reduces the player's health by damage_amt
 func take_damage(damage_amt: int) -> void:
 	if !alive:
@@ -105,3 +113,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area is MobBaseClass:
 		var mob = area as MobBaseClass
 		take_damage(mob.attack_power)
+	
+	elif area.name == "Heart":
+		add_health(1)
+		area.queue_free()
