@@ -2,7 +2,6 @@ extends MobBaseClass
 
 @onready var anim_spr: AnimatedSprite2D = $AnimatedSprite2D
 
-
 var direction := Vector2(-1,0)
 
 

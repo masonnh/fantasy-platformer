@@ -1,7 +1,7 @@
 class_name MobBaseClass
 extends Area2D
 
-
+# Mob stats
 var health: int
 var attack_power: int
 var speed: int

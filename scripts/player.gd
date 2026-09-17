@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
+signal update_health
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox_collision: CollisionShape2D = $Hitbox/HitboxCollision
 @onready var hitbox: Area2D = $Hitbox
 
-
+# Player consts
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -18,6 +19,7 @@ var alive = true
 var attacking := false
 
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if !alive:
 		return 
@@ -71,7 +73,11 @@ func attack() -> void:
 
 ## Reduces the player's health by damage_amt
 func take_damage(damage_amt: int) -> void:
+	if !alive:
+		return
+
 	health -= damage_amt
+	update_health.emit(health)
 	if health <= 0:
 		die()
 
