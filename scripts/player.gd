@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 signal update_health
@@ -7,8 +8,8 @@ signal update_health
 @onready var hitbox: Area2D = $Hitbox
 
 # Player consts
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 400.0
+const JUMP_VELOCITY = -500.0
 
 # Player stats
 var health := 3

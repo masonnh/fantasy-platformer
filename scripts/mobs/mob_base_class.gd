@@ -16,7 +16,6 @@ func init_mob(health_init: int = 1, attack_power_init: int = 1, speed_init: int 
 
 ## Subtracts mob health by damage_amt
 func take_damage(damage_amt: int) -> void:
-	print('mob taking damage')
 	health -= damage_amt
 	if health <= 0:
 		die()
@@ -24,7 +23,6 @@ func take_damage(damage_amt: int) -> void:
 
 ## Removes mob from scene
 func die() -> void:
-	print('mob die')
 	queue_free()
 
 
@@ -32,8 +30,3 @@ func die() -> void:
 func move(direction: Vector2, delta: float) -> void:
 	position.x += direction.x * speed * delta
 	position.y += direction.y * speed * delta
-
-
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	pass

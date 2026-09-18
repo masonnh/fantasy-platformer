@@ -2,18 +2,54 @@ extends Node2D
 @onready var hud: CanvasLayer = $Hud
 @onready var heart_container: HBoxContainer = $Hud/HeartContainer
 
-var heart_size = 42
-
+var heart_size := 42
+var level := 1
+var current_level_root: Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_hud_hearts(3)
+	await _load_level(1)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+###################
+# Level Management
+###################
 
+## Loads the level based on the level number
+func _load_level(level_number: int) -> void:
+	# If there's a current level, delete it
+	if current_level_root:
+		current_level_root.queue_free()
+	
+	# Load the next level
+	var level_path = "res://scenes/levels/level%s.tscn" % level_number
+	var lvl_scene = load(level_path) as PackedScene
+	current_level_root = lvl_scene.instantiate()
+	add_child(current_level_root)
+	current_level_root.name = "LevelRoot"
+	_setup_level(current_level_root)
+
+
+## Sets up the level based on the level root
+func _setup_level(level_root: Node) -> void:
+	var player = level_root.get_node_or_null("Player")
+	if player is Player:
+		var p: Player = player as Player
+		p.update_health.connect(_on_player_update_health)
+
+
+###################
+# Signal Handlers
+###################
+
+func _on_player_update_health(health: int) -> void:
+	update_hud_hearts(health)
+
+
+###################
+# HUD Helpers
+###################
 
 ## Updates the health in the hud
 func update_hud_hearts(health: int) -> void:
@@ -34,7 +70,3 @@ func update_hud_hearts(health: int) -> void:
 		while curr_hearts > health:
 			heart_container.get_child(0).queue_free()
 			curr_hearts -= 1
-
-
-func _on_player_update_health(health: int) -> void:
-	update_hud_hearts(health)
