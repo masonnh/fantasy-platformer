@@ -1,13 +1,13 @@
-[gd_scene format=4 uid="uid://cqn3am2tul4yp"]
+[gd_scene format=4 uid="uid://doh45mbebcjyc"]
 
-[ext_resource type="Texture2D" uid="uid://dmw7ejxj6yg7j" path="res://assets/images/background/Background.png" id="1_4tcl0"]
-[ext_resource type="Texture2D" uid="uid://m2bpp1bjhbdp" path="res://assets/images/tilemaps/Tiles.png" id="2_dd0lh"]
-[ext_resource type="PackedScene" uid="uid://icnroonh0ghh" path="res://scenes/player.tscn" id="3_dd0lh"]
-[ext_resource type="PackedScene" uid="uid://dafc2c034jadn" path="res://scenes/snail.tscn" id="4_bfxgj"]
-[ext_resource type="PackedScene" uid="uid://wb4d7dxt6u6e" path="res://scenes/heart.tscn" id="5_dywbp"]
+[ext_resource type="Texture2D" uid="uid://dmw7ejxj6yg7j" path="res://assets/images/background/Background.png" id="1_d5djh"]
+[ext_resource type="Texture2D" uid="uid://m2bpp1bjhbdp" path="res://assets/images/tilemaps/Tiles.png" id="2_ok6xr"]
+[ext_resource type="PackedScene" uid="uid://icnroonh0ghh" path="res://scenes/player.tscn" id="3_dj4wq"]
+[ext_resource type="PackedScene" uid="uid://no6ccddtpv1" path="res://scenes/boar.tscn" id="4_niitk"]
+[ext_resource type="PackedScene" uid="uid://wb4d7dxt6u6e" path="res://scenes/heart.tscn" id="5_d5djh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfxgj"]
-texture = ExtResource("2_dd0lh")
+texture = ExtResource("2_ok6xr")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -492,7 +492,7 @@ size = Vector2(169, 356)
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1273563775]
 offset_right = 1152.0
 offset_bottom = 672.0
-texture = ExtResource("1_4tcl0")
+texture = ExtResource("1_d5djh")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1568682698]
 texture_filter = 1
@@ -500,14 +500,8 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAAA0AAAABAAEAAAAAAAwAAAAEAAYAAAABAA0AAAABAAEAAAACAA0AAAABAAEAAAADAA0AAAABAAEAAAAEAA0AAAABAAEAAAAFAA0AAAABAAEAAAAGAA0AAAABAAEAAAAHAA0AAAABAAEAAAAIAA0AAAABAAEAAAAJAA0AAAABAAEAAAAKAA0AAAABAAEAAAALAA0AAAABAAEAAAAMAA0AAAABAAEAAAANAA0AAAABAAEAAAAOAA0AAAABAAEAAAAPAA0AAAABAAEAAAAQAA0AAAABAAEAAAARAA0AAAABAAEAAAASAA0AAAABAAEAAAATAA0AAAABAAEAAAAUAA0AAAABAAEAAAAVAA0AAAABAAEAAAAWAA0AAAABAAEAAAAXAA0AAAABAAEAAAABAAwAAAABAAAAAAACAAwAAAABAAAAAAADAAwAAAABAAAAAAAEAAwAAAABAAAAAAAFAAwAAAABAAAAAAAGAAwAAAABAAAAAAAHAAwAAAABAAAAAAAIAAwAAAABAAAAAAAJAAwAAAABAAAAAAAKAAwAAAABAAAAAAALAAwAAAABAAAAAAAMAAwAAAABAAAAAAANAAwAAAABAAAAAAAOAAwAAAABAAAAAAAPAAwAAAABAAAAAAAQAAwAAAABAAAAAAARAAwAAAABAAAAAAASAAwAAAABAAAAAAATAAwAAAABAAAAAAAUAAwAAAABAAAAAAAVAAwAAAABAAAAAAAWAAwAAAABAAAAAAAXAAwAAAABAAAAAAAAAAsAAAAEAAYAAAAAAAoAAAAEAAYAAAAAAAkAAAAEAAYAAAAAAAgAAAAEAAYAAAAAAAcAAAAEAAYAAAAAAAYAAAAEAAYAAAAAAAUAAAAEAAYAAAAAAAQAAAAEAAYAAAAAAAMAAAAEAAYAAAAAAAIAAAAEAAYAAAAAAAEAAAAEAAYAAAAAAAAAAAAEAAYAAAA=")
 tile_set = SubResource("TileSet_8ib2y")
 
-[node name="Player" parent="." unique_id=1873848005 instance=ExtResource("3_dd0lh")]
+[node name="Player" parent="." unique_id=1873848005 instance=ExtResource("3_dj4wq")]
 position = Vector2(143, 525)
-
-[node name="Snail" parent="." unique_id=344229118 instance=ExtResource("4_bfxgj")]
-position = Vector2(552, 570)
-
-[node name="Heart" parent="." unique_id=14928600 instance=ExtResource("5_dywbp")]
-position = Vector2(866.99994, 527.99994)
 
 [node name="Exit" type="Area2D" parent="." unique_id=1040570749]
 position = Vector2(1237, 492)
@@ -516,5 +510,11 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=61768497]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_8ib2y")
+
+[node name="Boar" parent="." unique_id=2023764386 instance=ExtResource("4_niitk")]
+position = Vector2(792, 570)
+
+[node name="Heart" parent="." unique_id=14928600 instance=ExtResource("5_d5djh")]
+position = Vector2(282.99997, 521.99994)
 
 [connection signal="body_entered" from="Exit" to="Player" method="_on_exit_body_entered"]

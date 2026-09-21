@@ -9,7 +9,7 @@ var current_level_root: Node = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_hud_hearts(3)
-	await _load_level(1)
+	await _load_level(level)
 
 
 ###################
@@ -37,14 +37,22 @@ func _setup_level(level_root: Node) -> void:
 	if player is Player:
 		var p: Player = player as Player
 		p.update_health.connect(_on_player_update_health)
+		p.exit_level.connect(_on_player_exit_level)
 
 
 ###################
 # Signal Handlers
 ###################
 
+## Signal to update player health in hud
 func _on_player_update_health(health: int) -> void:
 	update_hud_hearts(health)
+
+
+## Signal to proceed to next level after finishing current level
+func _on_player_exit_level() -> void:
+	level += 1
+	_load_level(level)
 
 
 ###################
@@ -53,20 +61,21 @@ func _on_player_update_health(health: int) -> void:
 
 ## Updates the health in the hud
 func update_hud_hearts(health: int) -> void:
-	var curr_hearts = heart_container.get_children().size()
+	var curr_hearts = heart_container.get_child_count()
+	var loops = 0
 	
 	# Add hearts until hearts = health
 	if curr_hearts < health:
-		while curr_hearts < health:
+		var heart_diff = health - curr_hearts
+		for i in heart_diff:
 			var heart = TextureRect.new()
 			heart.texture = preload("res://assets/images/hud/heart.png")
 			heart.custom_maximum_size = Vector2(heart_size, heart_size)
 			heart.custom_minimum_size = Vector2(heart_size, heart_size)
 			heart_container.add_child(heart)
-			curr_hearts += 1
 	
 	# Remove hearts until hearts = health
 	else:
-		while curr_hearts > health:
-			heart_container.get_child(0).queue_free()
-			curr_hearts -= 1
+		var heart_diff = curr_hearts - health
+		for i in heart_diff:
+			heart_container.get_child(i).queue_free()

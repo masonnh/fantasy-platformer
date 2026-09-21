@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal update_health
+signal exit_level
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox_collision: CollisionShape2D = $Hitbox/HitboxCollision
@@ -118,3 +119,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	elif area.name == "Heart":
 		add_health(1)
 		area.queue_free()
+
+
+func _on_exit_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		exit_level.emit()
