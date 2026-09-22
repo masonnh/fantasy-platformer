@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://icnroonh0ghh" path="res://scenes/player.tscn" id="3_dj4wq"]
 [ext_resource type="PackedScene" uid="uid://no6ccddtpv1" path="res://scenes/boar.tscn" id="4_niitk"]
 [ext_resource type="PackedScene" uid="uid://wb4d7dxt6u6e" path="res://scenes/heart.tscn" id="5_d5djh"]
+[ext_resource type="PackedScene" uid="uid://utjhphckb41e" path="res://scenes/flag.tscn" id="6_ok6xr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfxgj"]
 texture = ExtResource("2_ok6xr")
@@ -516,5 +517,8 @@ position = Vector2(792, 570)
 
 [node name="Heart" parent="." unique_id=14928600 instance=ExtResource("5_d5djh")]
 position = Vector2(282.99997, 521.99994)
+
+[node name="Flag" parent="." unique_id=515444268 instance=ExtResource("6_ok6xr")]
+position = Vector2(1093, 522)
 
 [connection signal="body_entered" from="Exit" to="Player" method="_on_exit_body_entered"]

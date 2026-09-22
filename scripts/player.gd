@@ -23,6 +23,11 @@ var attacking := false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	# Handle restart level.
+	if Input.is_action_just_pressed("restart_level"):
+		get_tree().reload_current_scene()
+
+	# Everything below can only happen if player is alive
 	if !alive:
 		return 
 	
@@ -55,7 +60,7 @@ func _physics_process(delta: float) -> void:
 		anim_sprite.animation = "jumping"
 		
 	# Handle attack.
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and is_on_floor():
 		attack()
 
 	move_and_slide()

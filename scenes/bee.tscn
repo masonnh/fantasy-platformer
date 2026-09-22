@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://hp71ehvw78h1"]
+
+[ext_resource type="Texture2D" uid="uid://bdwi8e1wvb2h0" path="res://assets/images/bee/Attack-Sheet.png" id="1_ogg2i"]
+[ext_resource type="Script" uid="uid://dmp682ncakits" path="res://scripts/mobs/bee.gd" id="1_qf6nb"]
+[ext_resource type="Texture2D" uid="uid://dwtnwpu1lwynw" path="res://assets/images/bee/Hit-Sheet.png" id="2_qf6nb"]
+[ext_resource type="Texture2D" uid="uid://7vifa7p30g8x" path="res://assets/images/bee/Fly-Sheet.png" id="3_oynbf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkr4b"]
+atlas = ExtResource("1_ogg2i")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kro73"]
+atlas = ExtResource("1_ogg2i")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe60h"]
+atlas = ExtResource("1_ogg2i")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiyqc"]
+atlas = ExtResource("1_ogg2i")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykkpv"]
+atlas = ExtResource("2_qf6nb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_011rt"]
+atlas = ExtResource("2_qf6nb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovfpg"]
+atlas = ExtResource("2_qf6nb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28ix7"]
+atlas = ExtResource("2_qf6nb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq5cx"]
+atlas = ExtResource("3_oynbf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnnah"]
+atlas = ExtResource("3_oynbf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p68p"]
+atlas = ExtResource("3_oynbf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr6wi"]
+atlas = ExtResource("3_oynbf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ib2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkr4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kro73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe60h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiyqc")
+}],
+"loop": 1,
+"name": &"attacking",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykkpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_011rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovfpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28ix7")
+}],
+"loop": 1,
+"name": &"hitting",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq5cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnnah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p68p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr6wi")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k8ckf"]
+radius = 20.401525
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ib2y"]
+radius = 120.191055
+
+[node name="Bee" type="Area2D" unique_id=231601966]
+texture_filter = 1
+scale = Vector2(3, 3)
+script = ExtResource("1_qf6nb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=120942134]
+sprite_frames = SubResource("SpriteFrames_8ib2y")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.26533374
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=299079598]
+position = Vector2(6.666667, -7.3333335)
+shape = SubResource("CircleShape2D_k8ckf")
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=1531084518]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1893538007]
+shape = SubResource("CircleShape2D_8ib2y")
+
+[node name="BehaviorTimer" type="Timer" parent="." unique_id=1877264119]
+autostart = true
+
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="timeout" from="BehaviorTimer" to="." method="_on_behavior_timer_timeout"]

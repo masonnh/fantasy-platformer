@@ -1,14 +1,14 @@
-[gd_scene format=4 uid="uid://cqn3am2tul4yp"]
+[gd_scene format=4 uid="uid://cjlqvxecywrw4"]
 
-[ext_resource type="Texture2D" uid="uid://dmw7ejxj6yg7j" path="res://assets/images/background/Background.png" id="1_4tcl0"]
-[ext_resource type="Texture2D" uid="uid://m2bpp1bjhbdp" path="res://assets/images/tilemaps/Tiles.png" id="2_dd0lh"]
-[ext_resource type="PackedScene" uid="uid://icnroonh0ghh" path="res://scenes/player.tscn" id="3_dd0lh"]
-[ext_resource type="PackedScene" uid="uid://dafc2c034jadn" path="res://scenes/snail.tscn" id="4_bfxgj"]
-[ext_resource type="PackedScene" uid="uid://wb4d7dxt6u6e" path="res://scenes/heart.tscn" id="5_dywbp"]
-[ext_resource type="PackedScene" uid="uid://utjhphckb41e" path="res://scenes/flag.tscn" id="6_1seuy"]
+[ext_resource type="Texture2D" uid="uid://dmw7ejxj6yg7j" path="res://assets/images/background/Background.png" id="1_f5jb5"]
+[ext_resource type="Texture2D" uid="uid://m2bpp1bjhbdp" path="res://assets/images/tilemaps/Tiles.png" id="2_frjko"]
+[ext_resource type="PackedScene" uid="uid://icnroonh0ghh" path="res://scenes/player.tscn" id="3_f7rt6"]
+[ext_resource type="PackedScene" uid="uid://wb4d7dxt6u6e" path="res://scenes/heart.tscn" id="5_7eb4w"]
+[ext_resource type="PackedScene" uid="uid://hp71ehvw78h1" path="res://scenes/bee.tscn" id="5_f5jb5"]
+[ext_resource type="PackedScene" uid="uid://utjhphckb41e" path="res://scenes/flag.tscn" id="6_frjko"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfxgj"]
-texture = ExtResource("2_dd0lh")
+texture = ExtResource("2_frjko")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -493,7 +493,7 @@ size = Vector2(169, 356)
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1273563775]
 offset_right = 1152.0
 offset_bottom = 672.0
-texture = ExtResource("1_4tcl0")
+texture = ExtResource("1_f5jb5")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1568682698]
 texture_filter = 1
@@ -501,14 +501,8 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAAA0AAAABAAEAAAAAAAwAAAAEAAYAAAABAA0AAAABAAEAAAACAA0AAAABAAEAAAADAA0AAAABAAEAAAAEAA0AAAABAAEAAAAFAA0AAAABAAEAAAAGAA0AAAABAAEAAAAHAA0AAAABAAEAAAAIAA0AAAABAAEAAAAJAA0AAAABAAEAAAAKAA0AAAABAAEAAAALAA0AAAABAAEAAAAMAA0AAAABAAEAAAANAA0AAAABAAEAAAAOAA0AAAABAAEAAAAPAA0AAAABAAEAAAAQAA0AAAABAAEAAAARAA0AAAABAAEAAAASAA0AAAABAAEAAAATAA0AAAABAAEAAAAUAA0AAAABAAEAAAAVAA0AAAABAAEAAAAWAA0AAAABAAEAAAAXAA0AAAABAAEAAAABAAwAAAABAAAAAAACAAwAAAABAAAAAAADAAwAAAABAAAAAAAEAAwAAAABAAAAAAAFAAwAAAABAAAAAAAGAAwAAAABAAAAAAAHAAwAAAABAAAAAAAIAAwAAAABAAAAAAAJAAwAAAABAAAAAAAKAAwAAAABAAAAAAALAAwAAAABAAAAAAAMAAwAAAABAAAAAAANAAwAAAABAAAAAAAOAAwAAAABAAAAAAAPAAwAAAABAAAAAAAQAAwAAAABAAAAAAARAAwAAAABAAAAAAASAAwAAAABAAAAAAATAAwAAAABAAAAAAAUAAwAAAABAAAAAAAVAAwAAAABAAAAAAAWAAwAAAABAAAAAAAXAAwAAAABAAAAAAAAAAsAAAAEAAYAAAAAAAoAAAAEAAYAAAAAAAkAAAAEAAYAAAAAAAgAAAAEAAYAAAAAAAcAAAAEAAYAAAAAAAYAAAAEAAYAAAAAAAUAAAAEAAYAAAAAAAQAAAAEAAYAAAAAAAMAAAAEAAYAAAAAAAIAAAAEAAYAAAAAAAEAAAAEAAYAAAAAAAAAAAAEAAYAAAA=")
 tile_set = SubResource("TileSet_8ib2y")
 
-[node name="Player" parent="." unique_id=1873848005 instance=ExtResource("3_dd0lh")]
+[node name="Player" parent="." unique_id=1873848005 instance=ExtResource("3_f7rt6")]
 position = Vector2(143, 525)
-
-[node name="Snail" parent="." unique_id=344229118 instance=ExtResource("4_bfxgj")]
-position = Vector2(552, 570)
-
-[node name="Heart" parent="." unique_id=14928600 instance=ExtResource("5_dywbp")]
-position = Vector2(866.99994, 527.99994)
 
 [node name="Exit" type="Area2D" parent="." unique_id=1040570749]
 position = Vector2(1237, 492)
@@ -518,7 +512,16 @@ metadata/_edit_group_ = true
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_8ib2y")
 
-[node name="Flag" parent="." unique_id=515444268 instance=ExtResource("6_1seuy")]
+[node name="Heart" parent="." unique_id=14928600 instance=ExtResource("5_7eb4w")]
+position = Vector2(593, 516.00006)
+
+[node name="Bee" parent="." unique_id=231601966 instance=ExtResource("5_f5jb5")]
+position = Vector2(481, 263)
+
+[node name="Bee2" parent="." unique_id=1889668613 instance=ExtResource("5_f5jb5")]
+position = Vector2(809, 278)
+
+[node name="Flag" parent="." unique_id=515444268 instance=ExtResource("6_frjko")]
 position = Vector2(1093, 522)
 
 [connection signal="body_entered" from="Exit" to="Player" method="_on_exit_body_entered"]
