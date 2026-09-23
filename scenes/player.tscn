@@ -290,7 +290,7 @@ animations = [{
 size = Vector2(21, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8ckf"]
-size = Vector2(24, 52.66667)
+size = Vector2(30.333332, 52.66667)
 
 [node name="Player" type="CharacterBody2D" unique_id=1873848005]
 scale = Vector2(3, 3)
@@ -311,7 +311,7 @@ position = Vector2(20, -2.3333335)
 metadata/_edit_group_ = true
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox" unique_id=1418585156]
-position = Vector2(2.666668, 0)
+position = Vector2(5.833334, 0)
 shape = SubResource("RectangleShape2D_k8ckf")
 disabled = true
 

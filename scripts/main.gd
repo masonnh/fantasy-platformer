@@ -1,9 +1,10 @@
 extends Node2D
 @onready var hud: CanvasLayer = $Hud
 @onready var heart_container: HBoxContainer = $Hud/HeartContainer
+@onready var start_menu: CanvasLayer = $StartMenu
 
 var heart_size := 42
-var level := 1
+var level := 0
 var current_level_root: Node = null
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +39,13 @@ func _setup_level(level_root: Node) -> void:
 		var p: Player = player as Player
 		p.update_health.connect(_on_player_update_health)
 		p.exit_level.connect(_on_player_exit_level)
+	
+	var start_menu = level_root
+	print('start_menu=', start_menu)
+	if start_menu is StartMenu:
+		print('start_menu is StartMenu')
+		var sm: StartMenu = start_menu as StartMenu
+		sm.start_game.connect(_on_start_game)
 
 
 ###################
@@ -51,6 +59,12 @@ func _on_player_update_health(health: int) -> void:
 
 ## Signal to proceed to next level after finishing current level
 func _on_player_exit_level() -> void:
+	level += 1
+	_load_level(level)
+
+
+func _on_start_game() -> void:
+	print('start game emit ran')
 	level += 1
 	_load_level(level)
 

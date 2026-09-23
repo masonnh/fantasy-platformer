@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b4f74bbirujib"]
+
+[ext_resource type="Script" uid="uid://bdonq5riiyh12" path="res://scripts/start_menu.gd" id="1_8rpwu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ib2y"]
+font_size = 90
+
+[node name="StartMenu" type="CanvasLayer" unique_id=587272469]
+script = ExtResource("1_8rpwu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=74521036]
+offset_right = 1152.0
+offset_bottom = 652.0
+color = Color(0.55638164, 0.55638164, 0.5563816, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2069247390]
+offset_right = 1156.0
+offset_bottom = 652.0
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=1766034727]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer" unique_id=1446283697]
+layout_mode = 2
+text = "You win!"
+label_settings = SubResource("LabelSettings_8ib2y")

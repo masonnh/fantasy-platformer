@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 signal update_health
 signal exit_level
+signal start_game
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox_collision: CollisionShape2D = $Hitbox/HitboxCollision
@@ -26,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	# Handle restart level.
 	if Input.is_action_just_pressed("restart_level"):
 		get_tree().reload_current_scene()
+		start_game.emit()
 
 	# Everything below can only happen if player is alive
 	if !alive:
