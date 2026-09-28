@@ -4,7 +4,7 @@ extends Node2D
 @onready var start_menu: CanvasLayer = $StartMenu
 
 var heart_size := 42
-var level := 0
+var level := 1
 var current_level_root: Node = null
 
 # Called when the node enters the scene tree for the first time.

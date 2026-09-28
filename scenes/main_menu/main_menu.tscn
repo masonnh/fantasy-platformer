@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://blandoos8qtru"]
+
+[ext_resource type="Script" uid="uid://cytpdy87l5iad" path="res://scripts/main_menu/main_menu.gd" id="1_0ebjn"]
+[ext_resource type="Texture2D" uid="uid://dmw7ejxj6yg7j" path="res://assets/images/background/Background.png" id="1_fsom3"]
+
+[sub_resource type="SystemFont" id="SystemFont_8ib2y"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_k8ckf"]
+font_names = PackedStringArray("Impact")
+
+[node name="MainMenu" type="Control" unique_id=1918660771]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ebjn")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1211060842]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fsom3")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1565024862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1418463663]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1209999702]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1977904763]
+layout_mode = 2
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("SystemFont_8ib2y")
+theme_override_font_sizes/font_size = 64
+text = "Fantasy Platformer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1615013277]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1396856717]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=570005137]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_k8ckf")
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=781470344]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_k8ckf")
+theme_override_font_sizes/font_size = 24
+text = "Exit Game"
