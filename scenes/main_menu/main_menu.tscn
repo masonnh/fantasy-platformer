@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cytpdy87l5iad" path="res://scripts/main_menu/main_menu.gd" id="1_0ebjn"]
 [ext_resource type="Texture2D" uid="uid://dmw7ejxj6yg7j" path="res://assets/images/background/Background.png" id="1_fsom3"]
+[ext_resource type="PackedScene" uid="uid://ba1trlhhw4a8i" path="res://scenes/options_menu/options_menu.tscn" id="3_ob46e"]
 
 [sub_resource type="SystemFont" id="SystemFont_8ib2y"]
 font_names = PackedStringArray("Impact")
@@ -71,9 +72,20 @@ theme_override_fonts/font = SubResource("SystemFont_k8ckf")
 theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
+[node name="OptionsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2023295979]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_k8ckf")
+theme_override_font_sizes/font_size = 24
+text = "Options"
+
 [node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=781470344]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_k8ckf")
 theme_override_font_sizes/font_size = 24
 text = "Exit Game"
+
+[node name="OptionsMenu" parent="." unique_id=1560394178 instance=ExtResource("3_ob46e")]
+visible = false
+layout_mode = 1
