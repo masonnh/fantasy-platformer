@@ -5,9 +5,11 @@ signal update_health
 signal exit_level
 signal start_game
 
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hitbox_collision: CollisionShape2D = $Hitbox/HitboxCollision
-@onready var hitbox: Area2D = $Hitbox
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D as AnimatedSprite2D
+@onready var hitbox_collision: CollisionShape2D = $Hitbox/HitboxCollision as CollisionShape2D
+@onready var hitbox: Area2D = $Hitbox as Area2D
+@onready var sword_sound: AudioStreamPlayer2D = $SwordSound as AudioStreamPlayer2D
+@onready var hurt_sound: AudioStreamPlayer2D = $HurtSound as AudioStreamPlayer2D
 
 # Player consts
 const SPEED = 400.0
@@ -76,6 +78,7 @@ func flip_hitbox() -> void:
 ## Handles the player's attack state
 func attack() -> void:
 	attacking = true
+	sword_sound.play()
 	anim_sprite.animation = "attacking"
 	hitbox_collision.disabled = false
 
@@ -94,6 +97,7 @@ func take_damage(damage_amt: int) -> void:
 		return
 
 	health -= damage_amt
+	hurt_sound.play()
 	update_health.emit(health)
 	if health <= 0:
 		die()

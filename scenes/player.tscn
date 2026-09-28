@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://q63056e7opts" path="res://assets/images/player/Jump-End-Sheet.png" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://n8be2rnvy5yh" path="res://assets/images/player/Dead-Sheet.png" id="3_fjrip"]
 [ext_resource type="Texture2D" uid="uid://r3k32ufy582b" path="res://assets/images/player/Jump-Start-Sheet.png" id="5_fjrip"]
+[ext_resource type="AudioStream" uid="uid://b7xerom6p48aj" path="res://assets/sounds/SFX/whoosh.wav" id="8_smehm"]
+[ext_resource type="AudioStream" uid="uid://y4c7dc0i730k" path="res://assets/sounds/SFX/player_damage.wav" id="9_ur7pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("2_fjrip")
@@ -320,6 +322,15 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=808972237]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_8ib2y")
+
+[node name="SwordSound" type="AudioStreamPlayer2D" parent="." unique_id=1624934606]
+stream = ExtResource("8_smehm")
+pitch_scale = 0.7
+bus = &"Sfx"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=486632710]
+stream = ExtResource("9_ur7pv")
+bus = &"Sfx"
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

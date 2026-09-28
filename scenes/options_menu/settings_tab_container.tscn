@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c4yuir70o4e58" path="res://scenes/options_menu/hotkey_rebind_button.tscn" id="1_22fiw"]
 [ext_resource type="PackedScene" uid="uid://b4w2rj2iwcwjk" path="res://scenes/options_menu/window_mode_button.tscn" id="1_ekf7m"]
 [ext_resource type="PackedScene" uid="uid://cob26bx4j88rp" path="res://scenes/options_menu/resolution_mode_button.tscn" id="2_mykj7"]
+[ext_resource type="PackedScene" uid="uid://b5r3o75oc4tlm" path="res://scenes/options_menu/audio_slider_settings.tscn" id="4_hnhua"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxnit"]
 
@@ -121,29 +122,21 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer" unique_id=1434149089]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sound/MarginContainer" unique_id=1854535033]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer/ScrollContainer" unique_id=1340278744]
 layout_mode = 2
 theme_override_constants/separation = 64
-alignment = 1
 
-[node name="Accessibility" type="TabBar" parent="TabContainer" unique_id=1525932570]
-visible = false
+[node name="AudioSliderSettings" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1440146950 instance=ExtResource("4_hnhua")]
 layout_mode = 2
-metadata/_tab_index = 3
+bus_name = "Master"
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Accessibility" unique_id=215126826]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Accessibility/MarginContainer" unique_id=30344649]
+[node name="AudioSliderSettings2" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" unique_id=810040128 instance=ExtResource("4_hnhua")]
 layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
+bus_name = "Music"
+
+[node name="AudioSliderSettings3" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1587233029 instance=ExtResource("4_hnhua")]
+layout_mode = 2
+bus_name = "Sfx"

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cytpdy87l5iad" path="res://scripts/main_menu/main_menu.gd" id="1_0ebjn"]
 [ext_resource type="Texture2D" uid="uid://dmw7ejxj6yg7j" path="res://assets/images/background/Background.png" id="1_fsom3"]
 [ext_resource type="PackedScene" uid="uid://ba1trlhhw4a8i" path="res://scenes/options_menu/options_menu.tscn" id="3_ob46e"]
+[ext_resource type="AudioStream" uid="uid://cwi7vddyceu4l" path="res://assets/sounds/music/main-theme.ogg" id="4_uqeha"]
 
 [sub_resource type="SystemFont" id="SystemFont_8ib2y"]
 font_names = PackedStringArray("Impact")
@@ -89,3 +90,8 @@ text = "Exit Game"
 [node name="OptionsMenu" parent="." unique_id=1560394178 instance=ExtResource("3_ob46e")]
 visible = false
 layout_mode = 1
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1657906181]
+stream = ExtResource("4_uqeha")
+autoplay = true
+bus = &"Music"
