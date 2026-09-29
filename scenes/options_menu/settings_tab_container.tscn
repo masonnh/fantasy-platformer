@@ -1,9 +1,61 @@
 [gd_scene format=3 uid="uid://cfpnsaletc3hm"]
 
+[ext_resource type="Script" uid="uid://8emcch027q5h" path="res://scenes/options_menu/settings_tab_container.gd" id="1_8iyed"]
 [ext_resource type="PackedScene" uid="uid://c4yuir70o4e58" path="res://scenes/options_menu/hotkey_rebind_button.tscn" id="1_22fiw"]
 [ext_resource type="PackedScene" uid="uid://b4w2rj2iwcwjk" path="res://scenes/options_menu/window_mode_button.tscn" id="1_ekf7m"]
 [ext_resource type="PackedScene" uid="uid://cob26bx4j88rp" path="res://scenes/options_menu/resolution_mode_button.tscn" id="2_mykj7"]
 [ext_resource type="PackedScene" uid="uid://b5r3o75oc4tlm" path="res://scenes/options_menu/audio_slider_settings.tscn" id="4_hnhua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44mp6"]
+bg_color = Color(2.3102762e-06, 0.69807595, 0.59780586, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7inox"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(1.4920532e-06, 0.49355936, 0.41928503, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.23137255, 0.8, 0.46666667, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iyed"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.66655296, 0.56864524, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.23137255, 0.8, 0.46666667, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqed1"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(1.8289685e-06, 0.8581205, 0.7342191, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.23137255, 0.8, 0.46666667, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxnit"]
 
@@ -16,6 +68,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8iyed")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=1920945051]
 layout_mode = 1
@@ -28,6 +81,10 @@ offset_right = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_44mp6")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_7inox")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_8iyed")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_wqed1")
 tab_alignment = 1
 current_tab = 0
 

@@ -6,6 +6,30 @@
 [sub_resource type="SystemFont" id="SystemFont_8ib2y"]
 font_names = PackedStringArray("Impact")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2iadt"]
+bg_color = Color(0, 0.69803923, 0.59607846, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.23529412, 0.75686276, 0.45490196, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yv8em"]
+bg_color = Color(0, 0.85882354, 0.73333335, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.23529412, 0.75686276, 0.45490196, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [node name="OptionsMenu" type="Control" unique_id=1560394178]
 layout_mode = 3
 anchors_preset = 15
@@ -47,4 +71,6 @@ size_flags_vertical = 3
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1297460124]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_2iadt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yv8em")
 text = "Exit"
