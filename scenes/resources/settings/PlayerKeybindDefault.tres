@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PlayerKeybindResource" format=3 uid="uid://d30u2qqi6y0wv"]
+
+[ext_resource type="Script" uid="uid://b7d4bg6cpj75u" path="res://scenes/resources/settings/player_keybind_resource.gd" id="1_tnd07"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_tnd07"]
+device = -1
+physical_keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_yxnqm"]
+device = -1
+physical_keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_6j80r"]
+device = -1
+physical_keycode = 87
+unicode = 119
+
+[resource]
+script = ExtResource("1_tnd07")
+DEFAULT_MOVE_LEFT_KEY = SubResource("InputEventKey_tnd07")
+DEFAULT_MOVE_RIGHT_KEY = SubResource("InputEventKey_yxnqm")
+DEFAULT_MOVE_UP_KEY = SubResource("InputEventKey_6j80r")
+metadata/_custom_type_script = "uid://b7d4bg6cpj75u"
